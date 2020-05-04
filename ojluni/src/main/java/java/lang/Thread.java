@@ -24,6 +24,19 @@
  * questions.
  */
 
+/*
+ * This work was modified by Two Six Labs, LLC and is sponsored by a subcontract agreement with
+ * Raytheon BBN Technologies Corp. under Prime Contract No. FA8750-16-C-0006 with the Air Force
+ * Research Laboratory (AFRL).
+ *
+ * The Government has unlimited rights to use, modify, reproduce, release, perform, display, or disclose
+ * computer software or computer software documentation marked with this legend. Any reproduction of
+ * technical data, computer software, or portions thereof marked with this legend must also reproduce
+ * this marking.
+ *
+ * Copyright (C) 2020 Two Six Labs, LLC.  All rights reserved.
+ */
+
 package java.lang;
 
 import dalvik.annotation.optimization.FastNative;
@@ -153,6 +166,8 @@ class Thread implements Runnable {
     boolean started = false;
 
     private volatile String name;
+
+    private String privacyPurpose = "";
 
     private int         priority;
     private Thread      threadQ;
@@ -1660,6 +1675,9 @@ class Thread implements Runnable {
         );
         return result.booleanValue();
     }
+
+    public String getPrivacyPurpose() { return privacyPurpose; }
+    public void setPrivacyPurpose(String purpose) { this.privacyPurpose = purpose; }
 
     /**
      * Returns the identifier of this Thread.  The thread ID is a positive
